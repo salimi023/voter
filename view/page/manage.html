@@ -1,0 +1,75 @@
+<h3>Manage your voting</h3>
+<p><strong>You can start or stop the voting manually by setting the actual dates in the concerning fields.</strong>
+</p>
+<p>The fields marked with <span class="asterisk">*</span> are obligatory!</p>
+<div class="row">
+    <div class="col-md-3">
+        <p style="font-weight: bold; font-size: 2em">Current status:&nbsp;</p>
+    </div>
+    <div id="status" data-voting="<?php echo $vote->getStat(); ?>" class="col-md-3">
+        <p style="font-weight: bold; font-size: 2em">
+            <?php
+            switch($vote->getStat()) {
+                case 0:
+                echo '<span class="label label-danger">Ongoing</span>';
+                break;
+                case 1:
+                echo '<span class="label label-warning">Scheduled</span>';
+                break;
+                case 2:
+                echo '<span class="label label-success">Closed</span>';
+                break;
+                case 3:
+                echo '<span class="label label-primary">Archived</span>';
+                break;
+            }
+            ?>
+        </p>
+    </div>
+</div>
+<form id="form" method="POST" action="">
+    <div class="form-group">
+        <label for="title">Title:<span class="asterisk">*</span></label>
+        <input type="text" class="form-control" id="title" name="title" value="<?php echo $vote->getTitle(); ?>" required />
+    </div>
+    <div class="form-group">
+        <label for="desc">Description:<span class="asterisk">*</span></label>
+        <textarea class="form-control" rows="5" id="desc" name="desc" required><?php echo $vote->getDescr(); ?></textarea>
+    </div>
+    <div class="form-group">
+        <label for="question">Question:<span class="asterisk">*</span></label>
+        <input type="text" class="form-control" id="quest" name="quest" value="<?php echo $vote->getQuest(); ?>" required />
+    </div>
+    <div class="form-group">
+        <label for="start">Start:<span class="asterisk">*</span> </label>
+        <input type="text" class="form-control" id="start" name="start" value="<?php echo $vote->getVotingStart(); ?>" required />
+    </div>
+    <div class="form-group">
+        <label for="stop">Stop:<span class="asterisk">*</span> </label>
+        <input type="text" class="form-control" id="stop" name="stop" value="<?php echo $vote->getVotingStop(); ?>" required />
+    </div>
+    <div class="form-group">
+        <label for="admin_email">E-mail address (If you don't want to get an e-mail about the change of status, please leave it blank!):</label>
+        <input type="email" class="form-control" id="admin_email" name="admin_email" value="<?php echo $vote->getAdminEmail(); ?>" placeholder="Send me a message, if the status of the voting has been changed" />
+    </div>
+    <?php       
+    while($respon = $q2->fetch()) {
+        echo "<div id=\"{$respon['response_id']}\" class=\"form-group\">
+            <label for=\"response\">Response : </label>
+            <input type=\"text\" class=\"form-control\" id=\"respo[]\" name=\"respo[]\" value=\"{$respon['resp']}\" required /><br />
+            <button id=\"{$respon['response_id']}\" name=\"btn_del\" type=\"button\" class=\"btn btn-danger\" role=\"button\">Delete</button>
+            </div>";
+    }
+    ?>
+    <div id="resp"></div>
+    <input type="button" id="btn_resp" name="btn_resp" value="Add Response(s)" /><br /><br />
+    <input type="submit" class="btn btn-success" role="button" id="save" name="save" value="Update" />&nbsp;
+    <button type="button" class="btn btn-warning" id="btn_start" name="btn_start">Start voting manually</button>&nbsp;
+    <button type="button" class="btn btn-danger" id="close" name="close">Close voting manually</button>&nbsp;
+    <button type="button" class="btn btn-warning" id="arch" name="arch">Archive</button>&nbsp;
+    <button type="button" class="btn btn-danger" id="del" name="del">Delete</button>&nbsp;
+    <a href="review" class="btn btn-info" role="button">Back to votings</a>
+</form>
+<script src="js/datepicker/jquery.plugin.js"></script>
+<script src="js/datepicker/jquery.datepick.js"></script>
+<script src="js/manage.js"></script>

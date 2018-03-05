@@ -1,0 +1,38 @@
+<?php
+echo "<h3>Basic Information</h3>
+<table class=\"table\"><thead><tr><th>Title</th><th>Description</th><th>Duration</th><th>Question</th></tr></thead>
+    <tbody>
+        <tr>
+            <td>{$row->getTitle()}</td>
+            <td>{$row->getDescr()}</td>
+            <td>{$row->getVotingStart()} - {$row->getVotingStop()}</td>
+            <td>{$row->getQuest()}</td>
+        </tr>
+    </tbody>
+</table>";
+if($q2->rowCount()) {
+    echo '<h3>Number of Votes</h3>';
+    echo '<table class="table"><thead><tr><th>Vote</th><th>Number of votes</th></tr></thead><tbody>';        
+    foreach($votes->count as $num) {
+        echo "<tr>
+            <td>{$num['resp']}</td>
+            <td>{$num['COUNT(*)']}</td>
+            </tr>";
+    }
+    echo '</tbody></table>';
+    echo '<h3>Votes by Name (in alphabetical order)</h3><table class="table"><thead><tr><th>Voter</th><th>Vote</th><th>Date of voting</th><th>IP address of voter</th></tr></thead><tbody>';    
+    while($row2 = $q2->fetch()) {
+        echo "
+        <tr>        
+            <td>{$row2->getVoterName()}</td>
+            <td>{$row2->getResp()}</td>            
+            <td>{$row2->getVotingDate()}</td>
+            <td>{$row2->getVoterIp()}</td>
+        </tr>";
+    }
+    echo '</tbody></table>';
+}
+else {
+    echo '<div class="alert alert-danger" role="alert">This voting does not have any voter yet.</div>';
+}
+?>

@@ -1,0 +1,23 @@
+</div>
+<!-- /content -->
+</div>
+<!-- /row; content -->
+<div class="row">
+    <div id="footer" class="col-md-12">Voter v1.0 - 2017</div>
+</div>
+</div>
+<!-- /wrapper -->
+<script src="css/bootstrap/js/bootstrap.min.js"></script>
+<!--Error message in English-->
+<script>
+    $('#form input[type=text]').on('change invalid', function() {
+        var textfield = $(this).get(0);
+        textfield.setCustomValidity('');
+        if (!textfield.validity.valid) {
+            textfield.setCustomValidity('Please fill in this field!');
+        }
+    });
+</script>
+</body>
+
+</html>

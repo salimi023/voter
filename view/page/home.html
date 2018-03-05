@@ -1,0 +1,26 @@
+<h3>Ongoing votings:</h3>
+<?php
+error_reporting();
+try{
+    if($q->rowCount()) {
+        echo '<table class="table"><th>Title</th><th>Date of closing</th><th>Open</th>';
+            while($row = $q->fetch()) {
+                echo "<tr>
+                <td>{$row->getTitle()}</td>
+                <td>{$row->getVotingStop()}</td>
+                <td><button id=\"{$row->getVotingId()}\" class=\"btn btn-danger\" role=\"button\" data-toggle=\"modal\" data-target=\"#myModal\">Open</button></td>    
+                </tr>";
+            }            
+        echo '</table>';
+    }
+    else {
+        throw new Exception('<div class="alert alert-danger" role="alert">Currently there is no ongoing voting.</div>');
+    }
+}
+catch(Exception $e) {
+    echo $e->getMessage();
+}
+?>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
+    <script src="js/vote.js"></script>

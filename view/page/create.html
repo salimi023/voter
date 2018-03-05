@@ -1,0 +1,35 @@
+<h3>Create your own voting!</h3>
+<p>The fields marked with <span class="asterisk">*</span> are obligatory!</p>
+<form id="form" method="POST" action="">
+    <div class="form-group">
+        <label for="title">Title:&nbsp<span class="asterisk">*</span> </label>
+        <input type="text" class="form-control" id="title" name="title" value="<?php echo $votings->title; ?>" required />
+    </div>
+    <div class="form-group">
+        <label for="desc">Description:&nbsp<span class="asterisk">*</span></label>
+        <textarea class="form-control" rows="5" id="desc" name="desc" required><?php echo $votings->descr; ?></textarea>
+    </div>
+    <div class="form-group">
+        <label for="question">Question:&nbsp<span class="asterisk">*</span></label>
+        <input type="text" class="form-control" id="quest" name="quest" value="<?php echo $votings->quest; ?>" required />
+    </div>
+    <div class="form-group">
+        <label for="start">Start:&nbsp<span class="asterisk">*</span> </label>
+        <input type="text" class="form-control" id="start" name="start" value="<?php echo $votings->voting_start; ?>" required />
+    </div>
+    <div class="form-group">
+        <label for="stop">Stop:&nbsp<span class="asterisk">*</span> </label>
+        <input type="text" class="form-control" id="stop" name="stop" value="<?php echo $votings->voting_stop; ?>" required />
+    </div>
+    <div class="form-group">
+        <label for="admin_email">E-mail address (If you don't want to get an e-mail about the change of status, please leave it blank!):</label>
+        <input type="email" class="form-control" id="admin_email" name="admin_email" placeholder="Send me a message, if the status of the voting has been changed" value="<?php echo $votings->admin_email; ?>" />
+    </div>
+    <strong>Please add the response(s):</strong>&nbsp<span class="asterisk">*</span><br /><br>
+    <div id="resp"></div>
+    <input type="button" id="btn_resp" name="btn_resp" value="Response(s)" /><br /><br />
+    <input type="submit" id="send" name="send" class="btn btn-danger" role="button" value="Save" />
+</form>
+<script src="js/datepicker/jquery.plugin.js"></script>
+<script src="js/datepicker/jquery.datepick.js"></script>
+<script src="js/manage.js"></script>
