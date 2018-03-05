@@ -1,36 +1,35 @@
 # README #
 
- VOTER - Szavazó alkalmazás   
+VOTER - PHP voting application   
 
-LEGFONTOSABB FUNKCIÓK:
+BASIC FUNCTIONS:
 
-A) Szavazás készítése
-- egy kérdés,
-- tetszőleges számú válasz,
-- időzített indítás és lezárás (cron),
-- egy időben több szavazás párhuzamás futtatása,
-- szavazásonként tetszőleges admin e-mail cím hozzáadása automatikus értesítések igénylése esetén (választható opció).
+A) Creation of voting
+- one question,
+- options without limit,
+- scheduled automatic starting and/or closing (cron),
+- manual starting and/or closing
+- running more voting at the same time,
+- adding administrator e-mail address by voting for notification messages (starting and closing of votings; summerized results; optional function). 
 
-B) Név szerinti szavazatok leadása
-- Szavazók szerveroldali szűrése név és IP cím szerint a többszöri szavazás megakadályozása céljából,
-- SPAM robotok elleni védelem (egyéni CAPTCHA).
+B) Voting
+- serverside filtering of voters by name and IP address,
+- SPAM protected voting form.
 
-C) Szavazások kezelése
-- időzített indítás és lezárás (cron),
-- kézi indítás és lezárás,
-- módosítás,
-- archiválás,
-- törlés,
-- szavazatok összesítésének megtekintése,
-- admin részére automatikus összesített e-mail értesítés küldése az adott szavazás(ok) indításáról vagy lezárásról és az utóbbi(ak) esetén az összesített eredményekről (cron, választható opció).
+C) Management of votings
+- scheduled automatic starting and/or closing (cron),
+- manual starting and/or closing,
+- modification of votings,
+- archivating of votings,
+- deletion of votings,
+- review the results of votings (closed, archivated and ongoing as well),
+- e-mail notification about the starting and/or closing of votings and the summerized results of them to the administrator of the concerned voting (cron, optional function).
 
-ALKALMAZOTT TECHNOLÓGIÁK:
+USED TECHNOLOGIES:
 
-A) Frontend:
-
+A) FRONTEND:
 - HTML, CSS, JavaScript, Bootstrap, JQuery
 
-B) Backend:
-
-- natív PHP (OOP, MVC)
+B) BACKEND:
+- PHP (OOP, MVC, without framework),
 - MySQL
